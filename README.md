@@ -7,12 +7,12 @@ Discord music bot (Type script)
 
 ## Commads
 
-- [x] play (url , youtube serach)
+- [] play (url , youtube serach)
 
 ## Buttons
 
-- [x] skip button ( skip 기능 )
-- [x] stop button ( player 정지 기능 )
+- [] skip button ( skip 기능 )
+- [] stop button ( player 정지 기능 )
 
 ## Config
 
