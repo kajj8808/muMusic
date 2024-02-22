@@ -5,6 +5,11 @@
 
 Discord music bot (Type script)
 
+## 목표
+
+- [] 이전 버전에서 일어 났던 문제 ( interaction player 가 15분 이상 경과시 연결이 끊기는 문제) 를 해결
+- [] 플레이어가 특정 곡에 대해 재생을 못하는 문제 해결
+
 ## Commads
 
 - [] play (url , youtube serach)
