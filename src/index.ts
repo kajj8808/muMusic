@@ -6,7 +6,7 @@ import { row } from "./commands/play";
 
 import "./discord";
 
-const client = new Client({
+export const client = new Client({
   intents: [
     IntentsBitField.Flags.Guilds,
     IntentsBitField.Flags.GuildMembers,
