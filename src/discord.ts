@@ -1,5 +1,5 @@
 import { ApplicationCommandOptionType, REST, Routes } from "discord.js";
-import playCommnad from "./commands/play";
+// import playCommnad from "./commands/play";
 
 export interface ICommand {
   name: string;
@@ -14,7 +14,7 @@ export interface ICommand {
   ];
 }
 
-const commands: ICommand[] = [playCommnad];
+const commands: ICommand[] = [];
 
 export async function registerCommand() {
   const rest = new REST({ version: "10" }).setToken(
@@ -31,4 +31,3 @@ export async function registerCommand() {
 }
 
 // registerCommand();
-import { row } from "./commands/play";

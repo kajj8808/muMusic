@@ -9,6 +9,7 @@ Discord music bot (Type script)
 
 - [] 이전 버전에서 일어 났던 문제 ( interaction player 가 15분 이상 경과시 연결이 끊기는 문제) 를 해결
 - [] 플레이어가 특정 곡에 대해 재생을 못하는 문제 해결
+- [x] MV 버전의 영상은 필터링에서 거를 수 있도록 처리
 
 ## Commads
 
@@ -42,3 +43,7 @@ Discord music bot (Type script)
 ## preview version
 
 [LocalMusicFile PlayBot](https://github.com/kajj8808/discordMusicBotLocalFile)
+
+## 만들면서 생긴 문제점
+
+- 추출기(youtube 등..)를 초기에 로드를 해두지 않아 result가 없다는 문제 메세지를 많이봄... 초기 로딩 코드를 작성... -> await player.extractors.loadDefault();
