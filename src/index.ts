@@ -4,6 +4,7 @@ import { playHandler, row } from "./commands/play";
 
 import "./discord";
 import { Player } from "discord-player";
+import { sleep } from "./utiles";
 
 const client = new Client({
   intents: ["Guilds", "GuildVoiceStates", "GuildMessages"],
@@ -33,7 +34,7 @@ client.on("ready", async () => {
 export const player = new Player(client, {
   ytdlOptions: {
     quality: "highestaudio",
-    highWaterMark: 1 << 26,
+    highWaterMark: 1 << 27,
   },
 });
 
@@ -42,9 +43,11 @@ player.events.on("playerStart", (queue, track) => {
   message.edit(`plaing ${track.title}🎶`);
 });
 
-player.events.on("audioTrackAdd", (queue, track) => {
+player.events.on("audioTrackAdd", async (queue, track) => {
   const message = queue.metadata.message as Message<boolean>;
-  message.edit(`added for ${track.title}😗`);
+  const addedMessage = message.channel.send(`added for ${track.title}😗`);
+  await sleep(10);
+  (await addedMessage).delete();
 });
 
 player.events.on("error", (queue, error) => {

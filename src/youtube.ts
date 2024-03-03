@@ -8,20 +8,22 @@ export async function searchYoutubeUrl(query: string) {
   try {
     const result = await youtube.search.list({
       q: query,
-      maxResults: 3,
+      maxResults: 5,
       part: ["snippet"],
       type: ["video"],
       topicId: "/m/04rlf",
       videoDuration: "any",
       order: "relevance",
     });
+
     const notMVTitles = result.data.items?.filter(
       (item) => !item.snippet?.title?.includes("MV")
     );
 
-    const videoId = notMVTitles![0];
+    const videoId = notMVTitles![0].id?.videoId;
     return `https://www.youtube.com/watch?v=${videoId}`;
   } catch (error) {
+    console.log(error);
     return null;
   }
 }
