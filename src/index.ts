@@ -1,10 +1,11 @@
 import "dotenv/config";
 import { Client, Message } from "discord.js";
-import { playHandler, row } from "./commands/play";
+import { playHandler, playMessageEmbedFactory, row } from "./commands/play";
 
 import "./discord";
 import { Player } from "discord-player";
 import { sleep } from "./utiles";
+import { IMetaData } from "./types";
 
 const client = new Client({
   intents: ["Guilds", "GuildVoiceStates", "GuildMessages"],
@@ -38,9 +39,12 @@ export const player = new Player(client, {
   },
 });
 
-player.events.on("playerStart", (queue, track) => {
+player.events.on("playerStart", async (queue, track) => {
   const message = queue.metadata.message as Message<boolean>;
-  message.edit(`plaing ${track.title}🎶`);
+  const metadata = track.metadata as IMetaData;
+  const messageEmbeds = await playMessageEmbedFactory(metadata);
+
+  message.edit({ embeds: [messageEmbeds] });
 });
 
 player.events.on("audioTrackAdd", async (queue, track) => {
